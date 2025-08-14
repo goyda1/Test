@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ресторан "Угли" — Лучшее мясо в городе</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: #222;
+      line-height: 1.6;
+      background-color: #fafafa;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background-color: #c81e19;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: 0.3s;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .btn:hover {
+      background-color: #a01814;
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background-color: transparent;
+      border: 2px solid #c81e19;
+      color: #c81e19;
+    }
+    .btn-secondary:hover {
+      background-color: #c81e19;
+      color: #fff;
+    }
+    section {
+      padding: 100px 0;
+    }
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1920x1080/333/c81e19?text=Гриль+на+открытом+огне') no-repeat center center/cover;
+      color: #fff;
+      text-align: center;
+      padding: 180px 0 120px;
+    }
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .hero p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+    .features {
+      background-color: #fff;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
+    }
+    .feature-card {
+      text-align: center;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .feature-card h3 {
+      font-size: 22px;
+      margin: 20px 0;
+      color: #c81e19;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .dish {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .dish img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .dish-content {
+      padding: 20px;
+      background: #fff;
+    }
+    .dish h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .dish p {
+      color: #666;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+    .price {
+      font-weight: 700;
+      color: #c81e19;
+      font-size: 18px;
+    }
+    .reviews {
+      background-color: #f5f5f5;
+    }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .review {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .review-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .review-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+    .review-name {
+      font-weight: 600;
+      color: #333;
+    }
+    .stars {
+      color: #f5a623;
+      font-size: 14px;
+    }
+    .cta {
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+    }
+    .cta h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .cta p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 18px;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 50px auto 0;
+      padding: 40px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    .footer {
+      background-color: #111;
+      color: #aaa;
+      padding: 60px 0 30px;
+      text-align: center;
+    }
+    .footer a {
+      color: #c81e19;
+      text-decoration: none;
+    }
+    .social-links {
+      margin: 20px 0;
+    }
+    .social-links a {
+      margin: 0 10px;
+      font-size: 20px;
+    }
+    .location {
+      margin: 15px 0;
+      font-size: 16px;
+    }
+    .phone {
+      color: #fff;
+      font-weight: 600;
+      font-size: 20px;
+    }
+    .fixed-cta {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 100;
+    }
+    .fixed-cta .btn {
+      padding: 16px 24px;
+      font-size: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+      .hero p {
+        font-size: 18px;
+      }
+      section {
+        padding: 60px 0;
+      }
+      .form-container {
+        margin: 30px 20px 0;
+        padding: 20px;
+      }
+      .fixed-cta {
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 1. Главный экран (Hero) -->
+  <section class="hero">
+    <div class="container">
+      <h1>Настоящее мясо — на открытом огне</h1>
+      <p>Ресторан "Угли" — где каждый кусок проходит через живой огонь. Только выдержанная говядина, дичь и авторская рубка. Никаких полуфабрикатов. Только вкус, который запомнится.</p>
+      <a href="#booking" class="btn">Забронировать столик</a>
+    </div>
+  </section>
+
+  <!-- 2. Преимущества (USP) -->
+  <section class="features">
+    <div class="container">
+      <h2 style="text-align:center;">Почему нас выбирают</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <img src="https://placehold.co/80x80/c81e19/fff?text=Огонь" alt="Огонь" style="width:80px;height:80px;border-radius:50%;margin:0 auto;">
+          <h3>Гриль на открытом огне</h3>
+          <p>Мясо готовится только на настоящем древесном угле — это даёт неповторимый аромат и хрустящую корочку, которую невозможно воссоздать на газе.</p>
+        </div>
+        <div class="feature-card">
+          <img src="https://placehold.co/80x80/c81e19/fff?text=🥩" alt="Мясо" style="width:80px;height:80px;border-radius:50%;margin:0 auto;">
+          <h3>Только выдержанная говядина</h3>
+          <p>Наши стейки проходят сухую выдержку от 28 до 45 дней. Это усиливает вкус, делает мясо нежным и концентрирует сок.</p>
+        </div>
+        <div class="feature-card">
+          <img src="https://placehold.co/80x80/c81e19/fff?text=👨‍🍳" alt="Шеф" style="width:80px;height:80px;border-radius:50%;margin:0 auto;">
+          <h3>Шеф с 15-летним опытом</h3>
+          <p>Александр Волков — бывший шеф-повар мясных ресторанов Нью-Йорка и Лондона. Каждое блюдо проходит его личный контроль.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:50px;">
+        <a href="#menu" class="btn">Посмотреть меню</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Меню (с акцентом на мясо) -->
+  <section id="menu">
+    <div class="container">
+      <h2 style="text-align:center;">Наше мясо — ваш выбор</h2>
+      <p style="text-align:center;max-width:700px;margin:20px auto;color:#555;">Мы не делаем сотню блюд. У нас — 12 идеальных мясных позиций. Каждая — результат месячных тестов, выдержки и точного контроля температуры.</p>
+      <div class="menu-grid">
+        <div class="dish">
+          <img src="https://placehold.co/300x200/444/c81e19?text=Рибай+45+дней" alt="Рибай">
+          <div class="dish-content">
+            <h3>Рибай «45 дней»</h3>
+            <p>Ангус, выдержка 45 дней, прожарка на угле. Подача с трюфельным маслом и пюре из белых грибов.</p>
+            <div class="price">1 950 ₽</div>
+          </div>
+        </div>
+        <div class="dish">
+          <img src="https://placehold.co/300x200/444/c81e19?text=Томагавк" alt="Томагавк">
+          <div class="dish-content">
+            <h3>Томагавк (1200 г)</h3>
+            <p>Цельная реберная часть, выдержка 35 дней. Готовится 45 минут. Идеально для двоих.</p>
+            <div class="price">5 200 ₽</div>
+          </div>
+        </div>
+        <div class="dish">
+          <img src="https://placehold.co/300x200/444/c81e19?text=Ягнёнок" alt="Ягнёнок">
+          <div class="dish-content">
+            <h3>Ягнёнок с травами</h3>
+            <p>Молодое мясо с Кавказа, маринад из розмарина, чеснока и оливкового масла.</p>
+            <div class="price">2 100 ₽</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:50px;">
+        <a href="#booking" class="btn">Забронировать столик</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Процесс приготовления (доверие) -->
+  <section class="features" style="background:#f9f9f9;">
+    <div class="container">
+      <h2 style="text-align:center;">Как рождается вкус</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>1. Отбор поставщиков</h3>
+          <p>Мы работаем только с фермами, где скот выращен без антибиотиков и гормонов. Каждая партия — с сертификатом происхождения.</p>
+        </div>
+        <div class="feature-card">
+          <h3>2. Сухая выдержка</h3>
+          <p>Мясо висит в контролируемой среде: температура +1°C, влажность 85%. Ферменты усиливают вкус, вода испаряется — концентрация растёт.</p>
+        </div>
+        <div class="feature-card">
+          <h3>3. Гриль на угле</h3>
+          <p>Только дуб и граб. Температура — 350–400°C. Никаких крышек. Мясо "дышит" огнём. 3 минуты на сторону — и идеальная корочка.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Отзывы (социальное доказательство) -->
+  <section class="reviews">
+    <div class="container">
+      <h2 style="text-align:center;">Что говорят гости</h2>
+      <div class="review-grid">
+        <div class="review">
+          <div class="review-header">
+            <img src="https://placehold.co/60x60/ddd/333?text=АН" class="review-avatar" alt="Анна Н.">
+            <div>
+              <div class="review-name">Анна Н.</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p>«После "Углей" другие стейки кажутся просто жареным мясом. Томагавк на 1200 г — шедевр. Приедем снова с друзьями».</p>
+        </div>
+        <div class="review">
+          <div class="review-header">
+            <img src="https://placehold.co/60x60/ddd/333?text=ДК" class="review-avatar" alt="Дмитрий К.">
+            <div>
+              <div class="review-name">Дмитрий К.</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p>«Был в лучших стейкхаусах мира. Здесь — один из лучших рибай. Особенно поразило, что шеф сам пришёл уточнить степень прожарки».</p>
+        </div>
+        <div class="review">
+          <div class="review-header">
+            <img src="https://placehold.co/60x60/ddd/333?text=ЕП" class="review-avatar" alt="Елена П.">
+            <div>
+              <div class="review-name">Елена П.</div>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <p>«Сын-вегетарианец впервые попробовал мясо и сказал: "Теперь понимаю, почему люди это едят"».</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Форма бронирования (конверсия) -->
+  <section class="cta" id="booking">
+    <div class="container">
+      <h2>Забронируйте столик сегодня</h2>
+      <p>Мы принимаем до 20 человек в вечер. Популярные даты раскупаются за 2–3 недели. Оставьте заявку — и мы закрепим столик за вами.</p>
+      <div class="form-container">
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label for="name">Имя</label>
+            <input type="text" id="name" name="name" placeholder="Анна" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Телефон</label>
+            <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required />
+          </div>
+          <div class="form-group">
+            <label for="guests">Количество гостей</label>
+            <select id="guests" name="guests" required>
+              <option value="">Выберите</option>
+              <option value="2">2 человека</option>
+              <option value="4">4 человека</option>
+              <option value="6">6 человек</option>
+              <option value="8+">8 и более</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date">Желаемая дата</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+          <div class="form-group">
+            <label for="time">Время</label>
+            <select id="time" name="time" required>
+              <option value="">Выберите</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="notes">Особые пожелания (аллергия, повод и т.д.)</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Например: день рождения, без глютена"></textarea>
+          </div>
+          <button type="submit" class="btn" style="width:100%;">Забронировать столик</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Футер с контактами и фиксированная кнопка -->
+  <footer class="footer">
+    <div class="container">
+      <div class="phone">+7 (495) 123-45-67</div>
+      <div class="location">Москва, ул. Грильная, 15 (рядом с парком Горького)</div>
+      <div class="social-links">
+        <a href="#">Instagram</a>
+        <a href="#">Telegram</a>
+        <a href="#">WhatsApp</a>
+      </div>
+      <p>© 2025 Ресторан "Угли". Все права защищены.</p>
+    </div>
+  </footer>
+
+  <!-- Фиксированная кнопка для мобильных -->
+  <div class="fixed-cta">
+    <a href="#booking" class="btn">Забронировать</a>
+  </div>
+</body>
+</html>
